@@ -14,78 +14,69 @@
 </head>
 <body id="landing-body">
 
-    <!-- Topbar Hijau -->
+    <!-- Bilah Atas Hijau -->
     <div class="topbar-quran" data-aos="fade-down" data-aos-duration="600">
         <div class="container d-flex flex-wrap justify-content-between align-items-center">
             <div class="d-flex gap-3 align-items-center">
-                <span><i class="bi bi-envelope-fill me-1"></i><span id="cms-top-email">support@ngajipintar.com</span></span>
-                <span class="d-none d-md-inline"><i class="bi bi-geo-alt-fill me-1"></i><span id="cms-top-address">Indonesia</span></span>
+                <span><i class="bi bi-envelope-fill me-1"></i><span id="cms-top-email">Memuat...</span></span>
+                <span class="d-none d-md-inline"><i class="bi bi-geo-alt-fill me-1"></i><span id="cms-top-address">Memuat...</span></span>
             </div>
             <div class="font-arab d-none d-lg-block">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
             <div>
-                <span><i class="bi bi-telephone-fill me-1"></i>Let's Talk: <strong id="cms-top-phone">+62 812-3456-7890</strong></span>
+                <span><i class="bi bi-telephone-fill me-1"></i>Hubungi Kami: <strong id="cms-top-phone">-</strong></span>
             </div>
         </div>
     </div>
 
-    <!-- Navbar Utama (Tombol Mobile di Kiri, Buka ke Kanan, Tutup ke Kiri) -->
+    <!-- Navigasi Utama -->
     <nav class="navbar navbar-expand-lg navbar-quran sticky-top">
         <div class="container d-flex align-items-center justify-content-between">
-            
             <div class="d-flex align-items-center gap-2">
-                <!-- Tombol Hamburger di Kiri pada Mobile -->
                 <button class="navbar-toggler border-0 shadow-none p-1 me-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#navMenu" aria-controls="navMenu">
                     <i class="bi bi-list fs-1 text-success"></i>
                 </button>
-
-                <!-- Brand Logo -->
                 <a class="navbar-brand d-flex align-items-center gap-2 fw-bold fs-4 text-dark m-0" href="#" onclick="filterNavigasi('home')">
-                    <img id="cms-logo-img" src="https://cdn-icons-png.flaticon.com/512/4358/4358667.png" alt="Logo" style="height: 38px; width: auto; object-fit: contain;">
-                    <span id="cms-site-name">Al-Quran</span>
+                    <img id="cms-logo-img" src="" alt="Logo" class="d-none" style="height: 38px; width: auto; object-fit: contain;">
+                    <span id="cms-site-name">Kelas Mengaji</span>
                 </a>
             </div>
 
-            <!-- Offcanvas Left-to-Right (offcanvas-start) -->
             <div class="offcanvas offcanvas-start" tabindex="-1" id="navMenu" aria-labelledby="navMenuLabel">
                 <div class="offcanvas-header border-bottom d-lg-none">
                     <h5 class="offcanvas-title fw-bold text-success d-flex align-items-center gap-2" id="navMenuLabel">
                         <i class="bi bi-book-half"></i> Menu Navigasi
                     </h5>
-                    <!-- Tombol Tutup Kembali ke Kiri -->
-                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Tutup"></button>
                 </div>
 
                 <div class="offcanvas-body d-lg-flex align-items-center justify-content-between w-100">
                     <ul class="navbar-nav mx-auto mb-3 mb-lg-0 gap-1" id="landing-nav-links">
-                        <li class="nav-item"><a class="nav-link active" href="#" onclick="filterNavigasi('home', this)">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" onclick="filterNavigasi('about', this)">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" onclick="filterNavigasi('courses', this)">Courses</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" onclick="filterNavigasi('tutors', this)">Tutors</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" onclick="filterNavigasi('blog', this)">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" onclick="filterNavigasi('contact', this)">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#" onclick="filterNavigasi('home', this)">Beranda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" onclick="filterNavigasi('about', this)">Tentang Kami</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" onclick="filterNavigasi('courses', this)">Program Kelas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" onclick="filterNavigasi('tutors', this)">Pengajar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" onclick="filterNavigasi('blog', this)">Artikel</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" onclick="filterNavigasi('contact', this)">Kontak</a></li>
                     </ul>
                     <div class="d-flex flex-column flex-lg-row gap-2">
-                        <a href="login.html" class="btn btn-outline-success fw-semibold px-3"><i class="bi bi-person-circle me-1"></i>Login</a>
-                        <button class="btn btn-emerald px-3" onclick="filterNavigasi('courses')">Quick Join Now</button>
+                        <a href="login.html" class="btn btn-outline-success fw-semibold px-3"><i class="bi bi-person-circle me-1"></i>Masuk</a>
+                        <button class="btn btn-emerald px-3" onclick="filterNavigasi('courses')">Daftar Sekarang</button>
                     </div>
                 </div>
             </div>
-
         </div>
     </nav>
 
-    <!-- Banner Atas: Selalu Tampil di Semua Menu, Murni Gambar, Klik Mengarah ke Courses -->
+    <!-- Spanduk Utama (Memuat Spinner Halus, Tanpa Gambar Bawaan Kopi) -->
     <section id="sec-hero" class="py-4" data-aos="zoom-out" data-aos-duration="800">
-        <!-- Tambahan class 'container' agar banner tidak full width di desktop -->
         <div class="container">
             <div id="heroCarousel" class="carousel slide shadow-lg rounded-4 overflow-hidden" data-bs-ride="carousel">
                 <div class="carousel-inner" id="banner-carousel-container">
-                    <!-- Placeholder sebelum gambar asli dimuat oleh JS -->
                     <div class="carousel-item active">
-                        <img src="https://images.unsplash.com/photo-1584286595398-a59f21d313f5?auto=format&fit=crop&w=1400&q=80" 
-                             class="banner-img-full" 
-                             alt="Banner" 
-                             onclick="filterNavigasi('courses')">
+                        <div class="bg-light d-flex flex-column align-items-center justify-content-center text-muted" style="min-height: 280px;">
+                            <div class="spinner-border text-success mb-2" role="status"></div>
+                            <small>Memuat spanduk...</small>
+                        </div>
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
@@ -99,14 +90,18 @@
     </section>
 
     <!-- SECTION: ABOUT US -->
+    <!-- BAGIAN: TENTANG KAMI -->
     <section id="sec-about" class="landing-section py-5">
         <div class="container py-3">
             <div class="row align-items-center g-4">
                 <div class="col-lg-6" data-aos="fade-right" data-aos-duration="900">
-                    <img id="cms-about-img" src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded-4 shadow w-100" style="height: auto;" alt="About">
+                    <div id="cms-about-skeleton" class="bg-light rounded-4 d-flex align-items-center justify-content-center" style="min-height: 260px;">
+                        <div class="spinner-border text-success"></div>
+                    </div>
+                    <img id="cms-about-img" src="" class="img-fluid rounded-4 shadow w-100 d-none" style="height: auto;" alt="Tentang Kami">
                 </div>
                 <div class="col-lg-6" data-aos="fade-left" data-aos-duration="900" data-aos-delay="100">
-                    <span class="badge bg-success-subtle text-success px-3 py-2 mb-2 fw-bold">ABOUT US</span>
+                    <span class="badge bg-success-subtle text-success px-3 py-2 mb-2 fw-bold">TENTANG KAMI</span>
                     <h2 class="fw-bold mb-3" id="cms-about-title">Tentang Lembaga Mengaji Kami</h2>
                     <p class="text-secondary lh-lg" id="cms-about-content" style="white-space: pre-line;"></p>
                     <div class="row g-3 mt-2">
@@ -296,7 +291,8 @@
             once: false,              // Animasi tetap berulang jika halaman di-scroll balik ke atas
             mirror: false             // Wajib false agar elemen TIDAK menghilang di tengah layar saat scroll ke bawah
         });
-    </script>    <script src="assets/js/supabase-config.js"></script>
+    </script>
+    <script src="assets/js/supabase-config.js"></script>
     <script src="assets/js/public.js"></script>
 </body>
 </html>

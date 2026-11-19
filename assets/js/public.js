@@ -51,7 +51,13 @@ async function loadCMSSettings() {
 
     document.getElementById('cms-site-name').innerText = data.site_name;
     document.getElementById('footer-site-name').innerText = data.site_name;
-    if (data.logo_url) document.getElementById('cms-logo-img').src = data.logo_url;
+
+    const logoEl = document.getElementById('cms-logo-img');
+    if (data.logo_url) {
+        logoEl.src = data.logo_url;
+        logoEl.classList.remove('d-none');
+    }
+
     if (data.bg_pattern_url) {
         document.getElementById('landing-body').style.backgroundImage = `url('${data.bg_pattern_url}')`;
         document.getElementById('landing-body').style.backgroundAttachment = 'fixed';
@@ -63,9 +69,20 @@ async function loadCMSSettings() {
 
     document.getElementById('cms-about-title').innerText = data.about_title;
     document.getElementById('cms-about-content').innerText = data.about_content;
-    if (data.about_image_url) document.getElementById('cms-about-img').src = data.about_image_url;
-    document.getElementById('cms-footer-text').innerText = data.footer_text;
 
+    const aboutImg = document.getElementById('cms-about-img');
+    const aboutSkeleton = document.getElementById('cms-about-skeleton');
+    if (data.about_image_url) {
+        aboutImg.onload = () => {
+            if (aboutSkeleton) aboutSkeleton.classList.add('d-none');
+            aboutImg.classList.remove('d-none');
+        };
+        aboutImg.src = data.about_image_url;
+    } else if (aboutSkeleton) {
+        aboutSkeleton.classList.add('d-none');
+    }
+
+    document.getElementById('cms-footer-text').innerText = data.footer_text;
     document.getElementById('contact-phone-box').innerText = data.topbar_phone;
     document.getElementById('contact-email-box').innerText = data.topbar_email;
     document.getElementById('contact-address-box').innerText = data.topbar_address;
@@ -102,9 +119,9 @@ async function loadPublicCourses() {
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="${(idx % 3) * 100}">
             <div class="course-card">
                 <div class="img-wrap">
-                    <img src="${p.gambar_url || 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=600&q=80'}" alt="${p.nama_paket}">
+                    ${p.gambar_url ? `<img src="${p.gambar_url}" alt="${p.nama_paket}">` : `<div class="bg-light text-muted text-center py-5">Tanpa Gambar</div>`}
                     <span class="badge-study" style="cursor:pointer;" onclick="bukaModalDaftar('${p.id}', '${p.nama_paket.replace(/'/g, "\\'")}')">
-                        Study Now • ${p.tipe_belajar}
+                        Daftar • ${p.tipe_belajar}
                     </span>
                 </div>
                 <div class="p-4 pt-4 d-flex flex-column flex-grow-1">
@@ -113,9 +130,9 @@ async function loadPublicCourses() {
                     <p class="small text-muted mb-0">${p.deskripsi || ''}</p>
 
                     <div class="course-stats">
-                        <div><strong class="d-block text-dark">${p.jml_pertemuan || 20}</strong><span class="text-muted">Lessons</span></div>
-                        <div><strong class="d-block text-dark">${p.durasi_minggu || 10}</strong><span class="text-muted">Weeks</span></div>
-                        <div><strong class="d-block text-dark">${p.kuota_siswa || 50}</strong><span class="text-muted">Enroll</span></div>
+                        <div><strong class="d-block text-dark">${p.jml_pertemuan || 20}</strong><span class="text-muted">Pertemuan</span></div>
+                        <div><strong class="d-block text-dark">${p.durasi_minggu || 10}</strong><span class="text-muted">Minggu</span></div>
+                        <div><strong class="d-block text-dark">${p.kuota_siswa || 50}</strong><span class="text-muted">Kuota</span></div>
                     </div>
 
                     <div class="course-footer-box">
@@ -135,6 +152,7 @@ async function loadPublicCourses() {
             </div>
         </div>
     `).join('');
+
     if (typeof AOS !== 'undefined') AOS.refreshHard();
 }
 

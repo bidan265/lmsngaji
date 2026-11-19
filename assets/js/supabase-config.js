@@ -34,18 +34,34 @@ function formatRupiah(angka) {
     return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka || 0);
 }
 
-// Fungsi Universal Upload File (Gambar/Video/Excel Image) ke Bucket 'videos'
+// Fungsi Universal Unggah Berkas ke Bucket 'videos' dengan Content-Type Asli
 async function uploadKeBucket(file, folder = 'media') {
     const ext = file.name ? file.name.split('.').pop() : 'png';
     const fileName = `${folder}/${Date.now()}_${Math.random().toString(36).substring(2, 8)}.${ext}`;
 
     const { error } = await db.storage.from(STORAGE_BUCKET).upload(fileName, file, {
         cacheControl: '3600',
-        upsert: true
+        upsert: true,
+        contentType: file.type || undefined
     });
 
-    if (error) throw new Error(`Gagal unggah ke bucket '${STORAGE_BUCKET}': ${error.message}`);
+    if (error) throw new Error(`Gagal mengunggah ke penyimpanan '${STORAGE_BUCKET}': ${error.message}`);
 
     const { data } = db.storage.from(STORAGE_BUCKET).getPublicUrl(fileName);
     return data.publicUrl;
+}
+
+// Helper Format Tanggal & Jam Indonesia (contoh: Kamis, 19 Nov 2026 • 16.00 WIB)
+function formatTanggalIndo(nilaiTanggal) {
+    if (!nilaiTanggal) return 'Jadwal Fleksibel';
+    const tgl = new Date(nilaiTanggal);
+    if (isNaN(tgl.getTime())) return nilaiTanggal;
+    return new Intl.DateTimeFormat('id-ID', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    }).format(tgl) + ' WIB';
 }
