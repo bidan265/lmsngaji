@@ -290,14 +290,13 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({
-            offset: 100,
-            duration: 750,
-            easing: 'ease-in-out',
-            once: false,
-            mirror: true
+            offset: 50,               // Animasi mulai jalan saat elemen masuk 50px dari bawah layar
+            duration: 1000,           // Durasi diperlambat jadi 1 detik agar lebih halus
+            easing: 'ease-out-cubic',
+            once: false,              // Animasi tetap berulang jika halaman di-scroll balik ke atas
+            mirror: false             // Wajib false agar elemen TIDAK menghilang di tengah layar saat scroll ke bawah
         });
-    </script>
-    <script src="assets/js/supabase-config.js"></script>
+    </script>    <script src="assets/js/supabase-config.js"></script>
     <script src="assets/js/public.js"></script>
 </body>
 </html>
